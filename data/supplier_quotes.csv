@@ -1,0 +1,9 @@
+part_id,supplier_id,supplier_name,unit_price_usd,moq,lead_time_offer_days,supplier_rating
+1001,S-ACME,ACME Industrial,12.5,50,10,4.5
+1001,S-BETA,BETA Supply,13.0,30,14,4.0
+1002,S-ACME,ACME Industrial,120.0,10,28,4.2
+1002,S-GAMMA,GAMMA Tech,127.0,10,18,4.6
+1003,S-BETA,BETA Supply,45.0,20,9,4.1
+1003,S-GAMMA,GAMMA Tech,43.0,10,7,4.4
+1004,S-ACME,ACME Industrial,2.2,100,5,4.7
+1004,S-BETA,BETA Supply,2.4,50,10,4.2

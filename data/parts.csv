@@ -1,0 +1,5 @@
+part_id,name,uom,category
+1001,Filter Element A,ea,Filtration
+1002,Pressure Sensor B,ea,Sensors
+1003,Valve C,ea,Valves
+1004,Gasket D,ea,Seals
