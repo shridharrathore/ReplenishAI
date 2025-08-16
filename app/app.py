@@ -3,6 +3,7 @@
 import streamlit as st
 import time
 import pandas as pd
+import os
 
 # TODO 1: Setup page config & title
 st.set_page_config(
@@ -92,17 +93,26 @@ if run_agent:
         time.sleep(0.8)
 
     status_placeholder.write("✅ **Agent analysis complete!**")
-
-    # TODO 4: Load data and generate recommendations
+    
+    def get_data_path():
+        if os.path.exists("../data/parts.csv"):  # Local development
+            return "../data/"
+        elif os.path.exists("data/parts.csv"):   # Streamlit Cloud
+            return "data/"
+        else:
+            raise FileNotFoundError("Data directory not found")
+        
+    # STEP 4: Load data and generate recommendations
     try:
         from engine import load_data, recommend, ReorderParams
 
+        data_path = get_data_path()
         parts, inv, dem, quotes = load_data(
-            "../data/parts.csv", 
-            "../data/inventory.csv", 
-            "../data/demand_history.csv", 
-            "../data/supplier_quotes.csv"
-        )
+        f"{data_path}parts.csv", 
+        f"{data_path}inventory.csv", 
+        f"{data_path}demand_history.csv", 
+        f"{data_path}supplier_quotes.csv"
+    )
 
         params = ReorderParams(service_level=service_level, review_horizon_days=review_horizon)
         recommendations = recommend(parts, inv, dem, quotes, params=params)
